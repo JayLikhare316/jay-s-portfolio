@@ -1,0 +1,12 @@
+Unused images that can be safely removed:
+./images/blog-1.jpg
+./images/blog-2.jpg
+./images/build.jpg
+./images/linux.jpg
+./images/loc.png
+./images/portfolio-1.jpg
+./images/portfolio-2.jpg
+./images/portfolio-3.jpg
+./images/user-3.jpg
+./images/index.html
+./sass/index.html

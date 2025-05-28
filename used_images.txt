@@ -1,0 +1,46 @@
+Images used in the website:
+images/3tier_architecture.png
+images/aws.png);
+images/devops-2.png);
+images/devops4.jpg);
+images/django.png);
+images/iac_architecture_updated.png
+images/iac_architecture_updated.png);
+images/jay.jpeg
+images/jay.jpeg);
+images/jenkins_cicd_pipeline.png);
+images/linux2.jpg);
+images/loader.gif) center no-repeat #fff;
+images/portfolio-5.jpg);
+images/portfolio-6.jpg);
+images/portfolio-7.jpg);
+images/portfolio-8.jpg);
+images/terraform_aws_architecture.png);
+images/wDevops.jpg);
+
+All images in the directory:
+./images/3tier_architecture.png
+./images/aws.png
+./images/blog-1.jpg
+./images/blog-2.jpg
+./images/build.jpg
+./images/devops-2.png
+./images/devops4.jpg
+./images/django.png
+./images/iac_architecture_updated.png
+./images/jay.jpeg
+./images/jenkins_cicd_pipeline.png
+./images/linux.jpg
+./images/linux2.jpg
+./images/loader.gif
+./images/loc.png
+./images/portfolio-1.jpg
+./images/portfolio-2.jpg
+./images/portfolio-3.jpg
+./images/portfolio-5.jpg
+./images/portfolio-6.jpg
+./images/portfolio-7.jpg
+./images/portfolio-8.jpg
+./images/terraform_aws_architecture.png
+./images/user-3.jpg
+./images/wDevops.jpg
