@@ -8,7 +8,6 @@ This repository contains the code for my personal portfolio website showcasing m
 - Skills and expertise showcase
 - Project portfolio
 - Resume/CV section
-- Contact information
 
 ## Technologies Used
 

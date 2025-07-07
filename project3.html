@@ -3,24 +3,11 @@
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Jay Likhare - 3-tier Architecture Project</title>
+	<title>Multi-Environment Terraform Infrastructure - Jay Likhare</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Jay Likhare's DevOps Project - 3-tier Architecture" />
-	<meta name="keywords" content="devops, aws, kubernetes, docker, terraform, jenkins, portfolio" />
+	<meta name="description" content="Multi-Environment AWS Infrastructure with Terraform Modules" />
+	<meta name="keywords" content="terraform, aws, multi-environment, infrastructure, devops, modules" />
 	<meta name="author" content="Jay Likhare" />
-
-	<!-- Template attribution removed -->
-
-	<!-- Social media meta tags updated with actual content -->
-	<meta property="og:title" content="Jay Likhare - 3-tier Architecture Project"/>
-	<meta property="og:image" content="images/iac_architecture_updated.png"/>
-	<meta property="og:url" content="https://www.jaysdevops.tech/project1.html"/>
-	<meta property="og:site_name" content="Jay's DevOps Portfolio"/>
-	<meta property="og:description" content="3-tier Architecture Project by Jay Likhare"/>
-	<meta name="twitter:title" content="Jay Likhare - 3-tier Architecture Project" />
-	<meta name="twitter:image" content="images/iac_architecture_updated.png" />
-	<meta name="twitter:url" content="https://www.jaysdevops.tech/project1.html" />
-	<meta name="twitter:card" content="summary_large_image" />
 
 	<link href="https://fonts.googleapis.com/css?family=Space+Mono" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
@@ -31,16 +18,11 @@
 	<link rel="stylesheet" href="css/icomoon.css">
 	<!-- Bootstrap  -->
 	<link rel="stylesheet" href="css/bootstrap.css">
-
 	<!-- Theme style  -->
 	<link rel="stylesheet" href="css/style.css">
 
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
-	<!-- FOR IE9 below -->
-	<!--[if lt IE 9]>
-	<script src="js/respond.min.js"></script>
-	<![endif]-->
 
 	</head>
 	<body>
@@ -48,136 +30,212 @@
 	<div class="fh5co-loader"></div>
 	
 	<div id="page">	
-
-	<div id="fh5co-about" class="animate-box">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-					<h2>Multi-Environment Terraform Infrastructure</h2>
-				</div>
-			</div>
-			<div class="row">
-				<!-- <div class="col-md-4">
-					<ul class="info">
-						<li><span class="first-block">Full Name:</span><span class="second-block">Jay Likhare</span></li>
-						<li><span class="first-block">Phone:</span><span class="second-block">+ 1235 2355 98</span></li> -->
-						<!-- <li><span class="first-block">Email:</span><span class="second-block">likharjee1@gmail.com</span></li>
-						<li><span class="first-block">Website:</span><span class="second-block">www.jaysdevops.tech</span></li>
-						<li><span class="first-block">Address:</span><span class="second-block">Ward no.10, Sausar, Chhindwara</span></li>
-					</ul> -->
-				<!-- </div> -->
-				<div class="col-md-12">
-					<h2>Making the MultiEnv Infra using Terraform</h2>
-					<p>This project demonstrates how to use Terraform modules to create and manage multiple environments (Development, Production, and Test) with consistent infrastructure but environment-specific configurations.</p>
-					<p>
-						<ul class="fh5co-social-icons">
-							<!-- <li><a href="#"><i class="icon-twitter3"></i></a></li> -->
-							<!-- <li><a href="https://www.instagram.com/jayyylikhare/"><i class="icon-instagram2"></i></a></li>
-							<li><a href="https://www.linkedin.com/in/jay-likhare-595652249?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"><i class="icon-linkedin2"></i></a></li> -->
-							<!-- <li><a href="https://github.com/JayLikhare316/3tierinfra.git"><i class="icon-github2"></i> Check the code here</a></li> -->
-						</ul>
-					</p>
-				</div>
-				<img src="images/terraform_aws_architecture.png" alt="" style="width: 100%; height: auto;">
-			</div>
-		</div>
-	</div>
-
-	<hr>
-
-	<div id="fh5co-about" class="animate-box">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-					<h2>The Multi-Environment Infrastructure is having 3-Envs(DEV/TEST/PROD)</h2>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12">
-					<pre>Project Structure
-main.tf - Main configuration file that defines the three environments (dev, prod, test)
-mymodule/ - Reusable module that contains the infrastructure components
-ec2.tf - EC2 instance configuration with security groups
-s3.tf - S3 bucket configuration
-rds.tf - RDS database configuration
-var.tf - Variable definitions for the module
-provider.tf - AWS provider configuration
-vpc.tf - VPC, subnet, and networking configuration
-env-key and env-key.pub - SSH key pair for EC2 instances
-Features
-Environment-specific resource naming and tagging
-Configurable instance types and counts per environment
-Public and private subnet configurations
-Shared security group configurations
-Consistent infrastructure across environments
-VPC networking with public and private subnets
-Usage
-Each environment can be configured separately in the main.tf file:
-
-module "DEV_ENV" {
-  source = "./mymodule"
-
-  my_env                = "dev"
-  ami                   = "ami-0734d584b153e1fc9"
-  instance_type         = "t2.micro"
-  public_instance_count = 1
-  private_instance_count = 0
-  s3_count              = 1
-  rds_instance_count    = 1
-  create_public_subnet  = true
-  create_private_subnet = false
-}
-Environment Configuration
-Development: 1 public t2.micro instance, 1 S3 bucket, 1 RDS instance
-Production: 1 public t2.micro instance, 2 private instances, 2 S3 buckets, 2 RDS instances
-Test: 1 public t2.micro instance, 1 private instance, 1 S3 bucket, 1 RDS instance
-Networking
-The infrastructure includes:
-
-Public subnet with internet access
-Private subnet (optional per environment)
-Route tables for proper network traffic flow
-Security
-The infrastructure includes security groups that allow:
-
-SSH access (port 22)
-HTTP access (port 80)
-HTTPS access (port 443)
-Database
-RDS MySQL 8.0 instances with configurable count per environment
-Storage
-S3 buckets with environment-specific naming and configurable count
-Prerequisites
-Terraform installed
-AWS credentials configured
-SSH key pair for EC2 instance access</pre>
-					<p>
-						<ul class="fh5co-social-icons">
-							<li><a href="https://github.com/JayLikhare316/multienv.git"><i class="icon-github2"></i>Code for Infrastructure</a></li>
-						</ul>
-					</p>
-				</div>
-				<img src="#" alt="" style="width: 100%; height: auto;">
-			</div>
-		</div>
-	</div>
-
-	
-	
-	<div id="fh5co-started" class="fh5co-bg-dark">
+	<header id="fh5co-header" class="fh5co-cover js-fullheight" role="banner" style="background-image:url(images/terraform_aws_architecture.png);" data-stellar-background-ratio="0.5">
 		<div class="overlay"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center">
+					<div class="display-t js-fullheight">
+						<div class="display-tc js-fullheight animate-box" data-animate-effect="fadeIn">
+							<h1><span>Multi-Environment Infrastructure</span></h1>
+							<h3><span>Terraform | AWS | Modules | DevOps</span></h3>
+							<p><a href="index.html" class="btn btn-primary">Back to Portfolio</a></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<div id="fh5co-about" class="animate-box">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+					<h2>Project Overview</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<h3>Multi-Environment AWS Infrastructure with Terraform Modules</h3>
+					<p>This project demonstrates advanced Infrastructure as Code (IaC) practices using Terraform modules to create and manage multiple environments (Development, Production, and Test) with consistent infrastructure patterns but environment-specific configurations.</p>
+					
+					<h4>Environment Strategy:</h4>
+					<ul>
+						<li><strong>Development Environment:</strong> Lightweight setup for development and testing</li>
+						<li><strong>Production Environment:</strong> High-availability setup with redundancy and scaling</li>
+						<li><strong>Test Environment:</strong> Isolated environment for integration and performance testing</li>
+					</ul>
+
+					<h4>Key Features:</h4>
+					<ul>
+						<li><strong>Modular Architecture:</strong> Reusable Terraform modules for consistent infrastructure</li>
+						<li><strong>Environment-Specific Configuration:</strong> Customizable parameters for each environment</li>
+						<li><strong>Resource Optimization:</strong> Cost-effective resource allocation per environment</li>
+						<li><strong>Security Best Practices:</strong> Environment-specific security groups and access controls</li>
+						<li><strong>Scalable Design:</strong> Easy to add new environments or modify existing ones</li>
+						<li><strong>State Management:</strong> Proper Terraform state management and backend configuration</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="fh5co-features" class="animate-box fh5co-bg-color">
+		<div class="container">
+			<div class="services-padding">
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+						<h2>Infrastructure Components</h2>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4 text-center">
+						<div class="feature-left">
+							<span class="icon">
+								<i class="icon-cloud"></i>
+							</span>
+							<div class="feature-copy">
+								<h3>Compute Resources</h3>
+								<p>EC2 instances with environment-specific configurations, auto-scaling groups, and load balancers</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-4 text-center">
+						<div class="feature-left">
+							<span class="icon">
+								<i class="icon-database"></i>
+							</span>
+							<div class="feature-copy">
+								<h3>Database Layer</h3>
+								<p>RDS MySQL instances with automated backups, multi-AZ deployment for production</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-4 text-center">
+						<div class="feature-left">
+							<span class="icon">
+								<i class="icon-folder"></i>
+							</span>
+							<div class="feature-copy">
+								<h3>Storage Solutions</h3>
+								<p>S3 buckets for object storage with environment-specific naming and access policies</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="fh5co-skills" class="animate-box">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+					<h2>Environment Configurations</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<div class="progress-wrap">
+						<h3><span class="name-left">Development</span><span class="value-right">Cost-Optimized</span></h3>
+						<ul>
+							<li>1 public t2.micro instance</li>
+							<li>1 S3 bucket</li>
+							<li>1 RDS instance (db.t3.micro)</li>
+							<li>Public subnet only</li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="progress-wrap">
+						<h3><span class="name-left">Production</span><span class="value-right">High-Availability</span></h3>
+						<ul>
+							<li>1 public + 2 private instances</li>
+							<li>2 S3 buckets</li>
+							<li>2 RDS instances (Multi-AZ)</li>
+							<li>Public and private subnets</li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="progress-wrap">
+						<h3><span class="name-left">Test</span><span class="value-right">Isolated Testing</span></h3>
+						<ul>
+							<li>1 public + 1 private instance</li>
+							<li>1 S3 bucket</li>
+							<li>1 RDS instance</li>
+							<li>Separate VPC for isolation</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="fh5co-work" class="fh5co-bg-dark">
 		<div class="container">
 			<div class="row animate-box">
 				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-					<h2>Hire Me!</h2>
-                    <p>I'm Jay Likhare, a DevOps Engineer with expertise in cloud infrastructure, CI/CD pipelines, and containerization. If you're looking for a dedicated professional to help you build and maintain robust systems, let's connect!</p>
-					<p><a href="https://www.linkedin.com/in/jay-likhare-595652249?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" class="btn btn-default btn-lg">Contact Me</a></p>
+					<h2>Technical Implementation</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<h3>Module Structure:</h3>
+					<ul>
+						<li><strong>main.tf:</strong> Environment definitions and module calls</li>
+						<li><strong>mymodule/:</strong> Reusable infrastructure components</li>
+						<li><strong>ec2.tf:</strong> EC2 instances and security groups</li>
+						<li><strong>s3.tf:</strong> S3 bucket configurations</li>
+						<li><strong>rds.tf:</strong> Database instance setup</li>
+						<li><strong>vpc.tf:</strong> Network infrastructure</li>
+						<li><strong>var.tf:</strong> Variable definitions</li>
+					</ul>
+				</div>
+				<div class="col-md-6">
+					<h3>Key Benefits:</h3>
+					<ul>
+						<li><strong>Consistency:</strong> Same infrastructure pattern across environments</li>
+						<li><strong>Maintainability:</strong> Single module to update all environments</li>
+						<li><strong>Cost Control:</strong> Environment-specific resource sizing</li>
+						<li><strong>Security:</strong> Isolated networks and access controls</li>
+						<li><strong>Scalability:</strong> Easy to add new environments</li>
+						<li><strong>Version Control:</strong> Infrastructure changes tracked in Git</li>
+					</ul>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<h3>Networking Architecture:</h3>
+					<ul>
+						<li><strong>VPC:</strong> Isolated virtual private cloud for each environment</li>
+						<li><strong>Public Subnets:</strong> For resources requiring internet access</li>
+						<li><strong>Private Subnets:</strong> For backend services and databases</li>
+						<li><strong>Route Tables:</strong> Proper traffic routing and security</li>
+						<li><strong>Security Groups:</strong> Firewall rules for SSH, HTTP, HTTPS, and database access</li>
+					</ul>
+
+					<h3>Security Implementation:</h3>
+					<ul>
+						<li>Environment-specific security groups</li>
+						<li>SSH key pair management</li>
+						<li>Database encryption at rest</li>
+						<li>VPC flow logs for monitoring</li>
+						<li>IAM roles and policies</li>
+					</ul>
+
+					<div class="text-center" style="margin-top: 30px;">
+						<a href="https://github.com/JayLikhare316/multienv.git" target="_blank" class="btn btn-primary btn-lg">
+							<i class="icon-github2"></i> View Source Code
+						</a>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<!-- Map section removed as not in use -->
 	</div>
 	
 	<div id="fh5co-footer">
@@ -206,7 +264,6 @@ SSH key pair for EC2 instance access</pre>
 	<script src="js/jquery.stellar.min.js"></script>
 	<!-- Easy PieChart -->
 	<script src="js/jquery.easypiechart.min.js"></script>
-	<!-- Google Map removed as not in use -->
 	
 	<!-- Main -->
 	<script src="js/main.js"></script>
